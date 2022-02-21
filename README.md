@@ -1,2 +1,2 @@
 # PDS-codes
-All Virtual Programming Labs of the UFMG Software Programming and Developing course
+All Virtual Programming Labs of the UFMG Software Programing and Development course
