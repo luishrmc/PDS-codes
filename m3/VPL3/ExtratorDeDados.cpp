@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
 #include <sstream>
 
 #include "ExtratorDeDados.hpp"
@@ -12,12 +12,8 @@
  * \tparam NUM_TYPE o tipo do numero. Note que qualquer tipo que aceite a
  * operacao sqrt eh valido: char, int, float, double, etc.
  */
-template <class NUM_TYPE>
-class Num2Sqrt: public Mapeador<NUM_TYPE, NUM_TYPE> {
-  NUM_TYPE transformaDado(NUM_TYPE& d) const override {
-
-    return sqrt(d);
-  }
+template <class NUM_TYPE> class Num2Sqrt : public Mapeador<NUM_TYPE, NUM_TYPE> {
+  NUM_TYPE transformaDado(NUM_TYPE &d) const override { return sqrt(d); }
 };
 
 /**
@@ -27,8 +23,8 @@ class Num2Sqrt: public Mapeador<NUM_TYPE, NUM_TYPE> {
  * numero que aquela string representa. Eh um erro invocar o metodo
  * "transformaDado" em uma string que nao represente um numero.
  */
-class String2Int: public Mapeador<std::string, int> {
-  int transformaDado(std::string& d) const override {
+class String2Int : public Mapeador<std::string, int> {
+  int transformaDado(std::string &d) const override {
 
     int result;
     std::stringstream ss(d);
@@ -49,15 +45,15 @@ class String2Int: public Mapeador<std::string, int> {
  * 9 => 3
  * 3 => 1
  */
-class Num2MaiorFator: public Mapeador<int, int> {
-  int transformaDado(int& d) const override {
+class Num2MaiorFator : public Mapeador<int, int> {
+  int transformaDado(int &d) const override {
     int result;
 
-    for(int i = d - 1; i >= 0; i--){
-      if(d == 1){
+    for (int i = d - 1; i >= 0; i--) {
+      if (d == 1) {
         return 1;
       }
-      if(d%i == 0){
+      if (d % i == 0) {
         result = i;
         break;
       }
@@ -75,14 +71,12 @@ class Num2MaiorFator: public Mapeador<int, int> {
  * \tparam NUM_TYPE o tipo do numero. Note que qualquer tipo que aceite a
  * operacao de comparacao contra zero eh aceitavel: double, int, short, etc.
  */
-template <class NUM_TYPE>
-class FiltroNumPositivo: public Filtro<NUM_TYPE> {
-  bool dadoValido(NUM_TYPE& d) const override {
+template <class NUM_TYPE> class FiltroNumPositivo : public Filtro<NUM_TYPE> {
+  bool dadoValido(NUM_TYPE &d) const override {
 
-    if(d > 0){
+    if (d > 0) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
@@ -102,23 +96,23 @@ class FiltroNumPositivo: public Filtro<NUM_TYPE> {
  * Os primeiros dez numeros abundantes sao:
  * 12, 18, 20, 24, 30, 36, 40, 42, 48, 54
  */
-class FiltroNumAbundante: public Filtro<int> {
-  bool dadoValido(int& num) const override {
+class FiltroNumAbundante : public Filtro<int> {
+  bool dadoValido(int &num) const override {
 
     int sum = 0;
 
-    for(int i = 1; i <= sqrt(num); i++){ //mais eficiente do olhar toda sequência de num.
+    for (int i = 1; i <= sqrt(num);
+         i++) { // mais eficiente do olhar toda sequência de num.
 
-      if(num%i == 0){
+      if (num % i == 0) {
 
-        if(num/i == i){
+        if (num / i == i) {
 
           sum += i;
-        }
-        else{
+        } else {
 
-          sum+=i;
-          sum+= (num/i);
+          sum += i;
+          sum += (num / i);
         }
       }
     }
@@ -131,7 +125,7 @@ class FiltroNumAbundante: public Filtro<int> {
  * \class FiltroNumTriangular.
  *
  * \brief Esta class filtra numeros "triangulares".
- * 
+ *
  * \details
  * Numeros triangulares sao numeros inteiros que sao a soma de uma progressao
  * aritmetica de incremento 1:
@@ -141,24 +135,21 @@ class FiltroNumAbundante: public Filtro<int> {
  * 10: 1+2+3+4
  * etc
  */
-class FiltroNumTriangular: public Filtro<int> {
-  bool dadoValido(int& num) const override {
+class FiltroNumTriangular : public Filtro<int> {
+  bool dadoValido(int &num) const override {
 
     int sum = 0;
 
-    for(int i = 1; i <= num; i++){
+    for (int i = 1; i <= num; i++) {
 
-      sum+=i;
-      if(num == sum){
+      sum += i;
+      if (num == sum) {
         return true;
-
       }
     }
     return false;
   }
 };
-
-
 
 /**
  * \class FiltroStringNatural
@@ -169,11 +160,11 @@ class FiltroNumTriangular: public Filtro<int> {
  * As strings validas devem conter somente digitos. Nao consideramos sinais
  * de mais ou menos, nem ponto ou virgula decimal. Somente numeros.
  */
-class FiltroStringNatural: public Filtro<std::string> {
-  bool dadoValido(std::string& d) const override {
+class FiltroStringNatural : public Filtro<std::string> {
+  bool dadoValido(std::string &d) const override {
 
-    for(char& c : d){
-      if ( !(isdigit(c)) ){
+    for (char &c : d) {
+      if (!(isdigit(c))) {
         return false;
       }
     }
@@ -188,7 +179,7 @@ class FiltroStringNatural: public Filtro<std::string> {
  *
  * \tparam T o tipo dos dados que serao lidos.
  */
-template <class T> void read_input(std::vector<T>& vec) {
+template <class T> void read_input(std::vector<T> &vec) {
   T val;
   while (std::cin >> val) {
     vec.push_back(val);
@@ -202,8 +193,8 @@ template <class T> void read_input(std::vector<T>& vec) {
  *
  * \tparam T o tipo dos dados que serao impressos.
  */
-template <class T> void print_output(std::vector<T>& vec) {
-  for (T& d: vec) {
+template <class T> void print_output(std::vector<T> &vec) {
+  for (T &d : vec) {
     std::cout << d << std::endl;
   }
 }
@@ -225,13 +216,13 @@ template <class T> void print_output(std::vector<T>& vec) {
  * \param in Vetor contendo strings de entrada.
  * \param out Vetor que irah armazenar os numeros que puderem ser convertidos.
  */
-void convert2int(std::vector<std::string>& in, std::vector<int>& out) {
-  Filtro<std::string>* filterS2N = new FiltroStringNatural();
-  Mapeador<std::string, int>* mapS2N = new String2Int();
+void convert2int(std::vector<std::string> &in, std::vector<int> &out) {
+  Filtro<std::string> *filterS2N = new FiltroStringNatural();
+  Mapeador<std::string, int> *mapS2N = new String2Int();
 
-  for(std::string& elem : in){
+  for (std::string &elem : in) {
 
-    if(filterS2N->dadoValido(elem)){
+    if (filterS2N->dadoValido(elem)) {
 
       out.push_back(mapS2N->transformaDado(elem));
     }
@@ -259,12 +250,11 @@ template <class NUM_TYPE> void test_filter_square_roots() {
   std::vector<NUM_TYPE> output_data;
   read_input(input_data);
 
+  Filtro<NUM_TYPE> *filterPOS = new FiltroNumPositivo<NUM_TYPE>();
+  Mapeador<NUM_TYPE, NUM_TYPE> *mapN2S = new Num2Sqrt<NUM_TYPE>();
 
-  Filtro<NUM_TYPE>* filterPOS = new FiltroNumPositivo<NUM_TYPE>();
-  Mapeador<NUM_TYPE,NUM_TYPE>* mapN2S = new Num2Sqrt<NUM_TYPE>();
-
-
-  ExtratorDeDados<NUM_TYPE,NUM_TYPE> extractor(input_data, *filterPOS, *mapN2S);
+  ExtratorDeDados<NUM_TYPE, NUM_TYPE> extractor(input_data, *filterPOS,
+                                                *mapN2S);
   extractor.getData(output_data);
   print_output(output_data);
   delete filterPOS;
@@ -294,7 +284,7 @@ template <class NUM_TYPE> void test_filter_square_roots() {
  * ----------------
  * Voce pode estudar esse codigo, se quiser, mas trata-se de codigo gerado
  * mecanicamente, somente para testar as funcoes desenvolvidas nesse exercicio.
- * 
+ *
  * Importante: o codigo abaixo nao usa boas normas de programacao: ele eh
  * redundante e desnecessariamente extenso.
  */
@@ -311,8 +301,8 @@ void print_maior_fator_de_numeros_triangulares() {
   std::vector<int> input_data;
   std::vector<int> output_data;
   read_input(input_data);
-  Filtro<int>* filtro = new FiltroNumTriangular();
-  Mapeador<int, int>* mapeador = new Num2MaiorFator();
+  Filtro<int> *filtro = new FiltroNumTriangular();
+  Mapeador<int, int> *mapeador = new Num2MaiorFator();
   ExtratorDeDados<int, int> extractor(input_data, *filtro, *mapeador);
   extractor.getData(output_data);
   print_output(output_data);
@@ -323,8 +313,8 @@ void print_maior_fator_de_numeros_abundantes() {
   std::vector<int> input_data;
   std::vector<int> output_data;
   read_input(input_data);
-  Filtro<int>* filtro = new FiltroNumAbundante();
-  Mapeador<int, int>* mapeador = new Num2MaiorFator();
+  Filtro<int> *filtro = new FiltroNumAbundante();
+  Mapeador<int, int> *mapeador = new Num2MaiorFator();
   ExtratorDeDados<int, int> extractor(input_data, *filtro, *mapeador);
   extractor.getData(output_data);
   print_output(output_data);
@@ -337,8 +327,8 @@ void print_maior_fator_de_strings_que_sao_numeros_triangulares() {
   std::vector<int> in_numbers_only;
   read_input(input_data);
   convert2int(input_data, in_numbers_only);
-  Filtro<int>* filtro = new FiltroNumTriangular();
-  Mapeador<int, int>* mapeador = new Num2MaiorFator();
+  Filtro<int> *filtro = new FiltroNumTriangular();
+  Mapeador<int, int> *mapeador = new Num2MaiorFator();
   ExtratorDeDados<int, int> extractor(in_numbers_only, *filtro, *mapeador);
   std::vector<int> output_data;
   extractor.getData(output_data);
@@ -351,8 +341,8 @@ void test_filter_maior_fator_positivo() {
   std::vector<int> input_data;
   std::vector<int> output_data;
   read_input(input_data);
-  Filtro<int>* filtro = new FiltroNumPositivo<int>();
-  Mapeador<int, int>* mapeador = new Num2MaiorFator();
+  Filtro<int> *filtro = new FiltroNumPositivo<int>();
+  Mapeador<int, int> *mapeador = new Num2MaiorFator();
   ExtratorDeDados<int, int> extractor(input_data, *filtro, *mapeador);
   extractor.getData(output_data);
   print_output(output_data);
@@ -364,28 +354,28 @@ int main() {
   int option = 0;
   std::cin >> option;
   switch (option) {
-    case 0:
-      test_filter_square_roots<int>();
-      break;
-    case 1:
-      test_filter_square_roots<double>();
-      break;
-    case 2:
-      print_maior_fator_de_numeros_triangulares();
-      break;
-    case 3:
-      print_only_naturals();
-      break;
-    case 4:
-      print_maior_fator_de_strings_que_sao_numeros_triangulares();
-      break;
-    case 5:
-      test_filter_maior_fator_positivo();
-      break;
-    case 6:
-      print_maior_fator_de_numeros_abundantes(); //28 num test_13;
-      break;
-    default:
-      std::cout << "Caso de teste desconhecido " << option << std::endl;
+  case 0:
+    test_filter_square_roots<int>();
+    break;
+  case 1:
+    test_filter_square_roots<double>();
+    break;
+  case 2:
+    print_maior_fator_de_numeros_triangulares();
+    break;
+  case 3:
+    print_only_naturals();
+    break;
+  case 4:
+    print_maior_fator_de_strings_que_sao_numeros_triangulares();
+    break;
+  case 5:
+    test_filter_maior_fator_positivo();
+    break;
+  case 6:
+    print_maior_fator_de_numeros_abundantes(); // 28 num test_13;
+    break;
+  default:
+    std::cout << "Caso de teste desconhecido " << option << std::endl;
   }
 }

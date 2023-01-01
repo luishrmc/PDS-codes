@@ -4,18 +4,18 @@
 
 using namespace std;
 
-struct NodeT{
-    int data;
-    NodeT* esq;
-    NodeT* dir;
+struct NodeT {
+  int data;
+  NodeT *esq;
+  NodeT *dir;
 };
 
-struct BST{
-    NodeT* root = nullptr;
-    void insertNodeHelper(NodeT* root, int data);
-    void insertNode(int data);
-    void removeNode(int data);
-    void display();
+struct BST {
+  NodeT *root = nullptr;
+  void insertNodeHelper(NodeT *root, int data);
+  void insertNode(int data);
+  void removeNode(int data);
+  void display();
 };
 
 #endif

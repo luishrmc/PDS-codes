@@ -10,18 +10,16 @@
  * salvas de um site.
  */
 class GooglePassword {
- public:
+public:
   /**
    * @brief Adiciona uma nova credencial.
    * @param url Endereco do site.
    * @param login Login utilizado no cadastro.
    * @param password Password utilizado no cadastro.
    */
-  void insert(const string& url,
-              const string& login,
-              const string& password);
-    
-    /**
+  void insert(const string &url, const string &login, const string &password);
+
+  /**
    * @brief Atualiza as credenciais utilizadas em um site.
    * @param url Endereco do site.
    * @param login Novo login que deve ser atualizado.
@@ -29,17 +27,15 @@ class GooglePassword {
    * @param new_password Novo password que deve ser atualizado.
    */
 
-  void remove(const string& url);
+  void remove(const string &url);
 
   /**
    * @brief Remove as informacoes de um determinado site.
    * @param url Endereco do site.
    */
 
-  void update(const string& url,
-              const string& login,
-              const string& old_password,
-              const string& new_password);
+  void update(const string &url, const string &login,
+              const string &old_password, const string &new_password);
 
   /**
    * @brief Verifica se o password passa em todas as restricoes
@@ -55,9 +51,8 @@ class GooglePassword {
    * @brief Imprime as informacoes salvas de todos os sites.
    */
 
- private:
-
-  bool checkPassword(const string& password) const;
+private:
+  bool checkPassword(const string &password) const;
 
   /**
    * @brief Verifica se o password passa em todas as restricoes
@@ -67,10 +62,7 @@ class GooglePassword {
    * @return false Falso se nao passa em pelo menos uma das condicoes
    */
 
-  
-
-
- private:
+private:
   /**
    * @brief Container que armazena as informacoes salvas dos sites. Ele
    * utiliza a url do site como chave e as informacoes sao do tipo Usuario.

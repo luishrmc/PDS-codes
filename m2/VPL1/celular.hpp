@@ -11,7 +11,7 @@ using std::string;
  *
  */
 class Celular {
- public:
+public:
   /**
    * @brief Construtor padrao que inicializa todas as variaveis da classe.
    *
@@ -24,14 +24,8 @@ class Celular {
    * @param qtd Quantidade de celulares do lote. Ex: 10 unidades.
    * @param valor Valor unitario do celular. Ex: R$ 756.25.
    */
-  Celular(string modelo,
-          string fabricante,
-          int armazenamento,
-          int memoria,
-          double peso,
-          std::string cor,
-          int qtd,
-          float valor);
+  Celular(string modelo, string fabricante, int armazenamento, int memoria,
+          double peso, std::string cor, int qtd, float valor);
 
   /**
    * @brief Implementa a sobrecarga do operador logico menor que ('<').
@@ -41,23 +35,21 @@ class Celular {
    * @return true Retorna true quando o objeto atual for 'menor' que o other
    * @return false Retorna false quando o objeto atual for 'maior' que o other
    */
-  bool operator<(const Celular& other);
+  bool operator<(const Celular &other);
 
- public:
-    string _modelo;
-    string _fabricante;
-    int _armazenamento;
-    int _memoria;
-    double _peso;
-    string _cor;
-    int _qtd;
-    float _valor;
-    int _codigo;
- 
+public:
+  string _modelo;
+  string _fabricante;
+  int _armazenamento;
+  int _memoria;
+  double _peso;
+  string _cor;
+  int _qtd;
+  float _valor;
+  int _codigo;
 
- private:
- static int codigo;
- 
+private:
+  static int codigo;
 };
 
 #endif

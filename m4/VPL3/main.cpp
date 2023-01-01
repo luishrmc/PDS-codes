@@ -1,12 +1,12 @@
-#include <iostream>
 #include "vetor.h"
+#include <iostream>
 
 using std::cin;
-using std::cout; 
+using std::cout;
 using std::endl;
 
 int main() {
-  try { 
+  try {
     int inicio, fim;
     cin >> inicio >> fim;
     Vetor<double> v(inicio, fim);
@@ -29,13 +29,13 @@ int main() {
       }
     }
   } catch (ExcecaoIntervaloVazio e) {
-    cout << "Erro: intervalo [" << e.inicio << ", " << e.fim << "]" 
+    cout << "Erro: intervalo [" << e.inicio << ", " << e.fim << "]"
          << " é vazio." << endl;
   } catch (ExcecaoIndiceNaoInicializado e) {
     cout << "Erro: índice " << e.indice << " não foi inicializado." << endl;
   } catch (ExcecaoIndiceInvalido e) {
     cout << "Erro: índice " << e.indice << " não pertence ao intervalo ["
-     << e.inicio << ", " << e.fim << "]." << endl;
+         << e.inicio << ", " << e.fim << "]." << endl;
   } catch (...) {
     cout << "Erro desconhecido!" << endl;
   }

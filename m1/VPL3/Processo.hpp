@@ -3,14 +3,15 @@
 #include <string>
 using namespace std;
 
-struct Processo{
-    int _id, _prioridade; string _nome; //Atributos
+struct Processo {
+  int _id, _prioridade;
+  string _nome; // Atributos
 
-    Processo(int id, string nome, int prioridade); //Constructor
-    void imprimir_dados();
+  Processo(int id, string nome, int prioridade); // Constructor
+  void imprimir_dados();
 
-    Processo* next = nullptr;
-    Processo* previous = nullptr;
+  Processo *next = nullptr;
+  Processo *previous = nullptr;
 };
 
 #endif

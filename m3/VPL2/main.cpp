@@ -1,6 +1,6 @@
-#include <string>
-#include <iostream>
 #include "Estoque.hpp"
+#include <iostream>
+#include <string>
 
 /**
  * \brief Arquivo de testes.
@@ -46,7 +46,7 @@ void test2() {
   }
 }
 
-void test_gt0() { //6   1
+void test_gt0() { // 6   1
   Estoque e0;
   e0.add_mercadoria("trigo", 30);
   e0.add_mercadoria("arroz", 45);
@@ -67,7 +67,7 @@ void test_gt1() {
   std::cout << (e0 > e1) << std::endl;
 }
 
-void test_gt2() { //8    0
+void test_gt2() { // 8    0
   Estoque e0;
   e0.add_mercadoria("trigo", 30);
   e0.add_mercadoria("arroz", 45);
@@ -78,7 +78,7 @@ void test_gt2() { //8    0
   std::cout << (e0 > e1) << std::endl;
 }
 
-void test_lt0() { //3    1
+void test_lt0() { // 3    1
   Estoque e0;
   e0.add_mercadoria("trigo", 30);
   e0.add_mercadoria("arroz", 45);
@@ -99,7 +99,7 @@ void test_lt1() {
   std::cout << (e1 < e0) << std::endl;
 }
 
-void test_lt2() { //5       0
+void test_lt2() { // 5       0
   Estoque e0;
   e0.add_mercadoria("trigo", 30);
   e0.add_mercadoria("arroz", 45);
@@ -170,7 +170,7 @@ void test_read_add2() {
   e0.imprime_estoque();
 }
 
-void test_read_gt() { //11
+void test_read_gt() { // 11
   Estoque e0;
   Estoque e1;
   std::string mercadoria;
@@ -190,52 +190,52 @@ int main() {
   int option = 0;
   std::cin >> option;
   switch (option) {
-    case 0:
-      test_add();
-      break;
-    case 1:
-      test_add_sub();
-      break;
-    case 2:
-      test_sub0();
-      break;
-    case 3:
-      test_lt0();
-      break;
-    case 4:
-      test_lt1();
-      break;
-    case 5:
-      test_lt2();
-      break;
-    case 6:
-      test_gt0();
-      break;
-    case 7:
-      test_gt1();
-      break;
-    case 8:
-      test_gt2();
-      break;
-    case 9:
-      test_read_add();
-      break;
-    case 10:
-      test_read_add2();
-      break;
-    case 11:
-      test_read_gt();
-      break;
-    case 12:
-      test0();
-      break;
-    case 13:
-      test1();
-      break;
-    case 14:
-      test2();
-      break;
-    default:
-      std::cerr << "Teste invalido: " << option << std::endl;
+  case 0:
+    test_add();
+    break;
+  case 1:
+    test_add_sub();
+    break;
+  case 2:
+    test_sub0();
+    break;
+  case 3:
+    test_lt0();
+    break;
+  case 4:
+    test_lt1();
+    break;
+  case 5:
+    test_lt2();
+    break;
+  case 6:
+    test_gt0();
+    break;
+  case 7:
+    test_gt1();
+    break;
+  case 8:
+    test_gt2();
+    break;
+  case 9:
+    test_read_add();
+    break;
+  case 10:
+    test_read_add2();
+    break;
+  case 11:
+    test_read_gt();
+    break;
+  case 12:
+    test0();
+    break;
+  case 13:
+    test1();
+    break;
+  case 14:
+    test2();
+    break;
+  default:
+    std::cerr << "Teste invalido: " << option << std::endl;
   }
 }
